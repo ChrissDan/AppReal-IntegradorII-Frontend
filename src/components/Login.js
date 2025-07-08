@@ -16,7 +16,7 @@ function Login({ onLogin }) {
     setLoading(true);
   
     try {
-      const response = await axios.post('https://3.14.129.201:8080/auth/login', {
+      const response = await axios.post('http://3.14.129.201:8080/auth/login', {
         username,
         password
       });
