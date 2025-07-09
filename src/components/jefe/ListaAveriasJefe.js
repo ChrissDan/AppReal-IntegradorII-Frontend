@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-import logoIberica from '../../images/logo-laiberica-actual.png'; // Asegúrate de tener esta imagen en tu proyecto
+import logoIberica from '../../images/logo-laiberica-actual.png';
 
 function ListaAveriasJefe() {
   const [averias, setAverias] = useState([]);
