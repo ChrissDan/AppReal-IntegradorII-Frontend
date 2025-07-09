@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://3.14.129.201:8080',
+  baseURL: 'https://integrador-ii-iberica.uc.r.appspot.com:8080',
 });
 
 // Interceptor para añadir el token antes de cada solicitud
