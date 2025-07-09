@@ -5,7 +5,7 @@ import { FaUser, FaLock } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import fondoIberica from '../../images/fondo-laiberica.jpg';
+import fondoIberica from '../images/fondo-laiberica.jpg';
 
 function Login({ onLogin }) {
   const [username, setUsername] = useState('');
