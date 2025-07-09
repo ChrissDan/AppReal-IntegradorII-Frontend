@@ -5,6 +5,7 @@ import { FaUser, FaLock } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import fondoIberica from '../../images/fondo-laiberica.jpg';
 
 function Login({ onLogin }) {
   const [username, setUsername] = useState('');
@@ -14,28 +15,47 @@ function Login({ onLogin }) {
   const handleSubmit = async e => {
     e.preventDefault();
     setLoading(true);
-  
+
     try {
       const response = await axios.post('https://integrador-ii-iberica.uc.r.appspot.com/auth/login', {
         username,
         password
       });
-  
+
       const token = response.data.token;
       localStorage.setItem('token', token);
-      onLogin(token);
-  
+      onLogin(token);
+
     } catch (err) {
       toast.error('Usuario o contraseña incorrectos');
     } finally {
       setLoading(false);
     }
-  };    
+  };
 
   return (
-    <div className="d-flex align-items-center justify-content-center vh-100" style={{
-      background: 'linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%)'
+    <div style={{
+      position: 'relative',
+      width: '100%',
+      height: '100vh',
+      overflow: 'hidden'
     }}>
+      <div style={{
+        position: 'absolute',
+        top: 0, left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundImage: `url(${fondoIberica})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        filter: 'blur(2px) brightness(0.7)'
+      }}></div>
+
+      <div className="d-flex align-items-center justify-content-center vh-100" style={{
+        position: 'relative',
+        zIndex: 1
+      }}></div>
+
       <motion.div
         className="card shadow-lg p-5"
         style={{
