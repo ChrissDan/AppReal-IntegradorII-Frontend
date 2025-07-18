@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axiosInstance from '../../services/axiosInstance';
 import { motion } from 'framer-motion';
-import { FaTrash, FaUserEdit, FaEye } from 'react-icons/fa';
+import { FaUserEdit, FaEye } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import jsPDF from 'jspdf';

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axiosInstance from '../../services/axiosInstance';
 import { FaUser, FaLock } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function RegistrarUsuarioJefe() {

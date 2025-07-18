@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function RegistrarFallaSupervisor() {
   const navigate = useNavigate();
-  const [token, setToken] = useState(localStorage.getItem('token'));
+  const [token] = useState(localStorage.getItem('token'));
 
   const [secciones, setSecciones] = useState([]);
   const [maquinas, setMaquinas] = useState([]);

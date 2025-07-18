@@ -196,8 +196,7 @@ function ListaAveriasJefe() {
       });
   };
 
-
-  async function getBase64FromUrl(url) {
+  /*async function getBase64FromUrl(url) {
     const response = await fetch(url);
     const blob = await response.blob();
     return new Promise((resolve, reject) => {
@@ -206,7 +205,7 @@ function ListaAveriasJefe() {
       reader.onerror = reject;
       reader.readAsDataURL(blob);
     });
-  }
+  }*/
 
   return (
     <motion.div
