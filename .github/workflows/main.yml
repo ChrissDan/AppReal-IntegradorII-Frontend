@@ -6,44 +6,21 @@ on:
       - main
 
 jobs:
-  build:
-    name: Build
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Repo
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: npm install
 
       - name: Build
-        env:
-          CI: false
         run: npm run build
 
-      - name: Archive Production Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: build
-          path: build
-
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
-
-      - name: Download Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: build
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
 
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@v4
-        with:
-          args: deploy --only hosting
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        run: firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }}
