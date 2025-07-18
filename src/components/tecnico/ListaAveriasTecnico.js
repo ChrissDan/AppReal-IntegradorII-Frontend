@@ -10,6 +10,7 @@ function ListaAveriasTecnico() {
   const [mostrarModal, setMostrarModal] = useState(false);
   const [tecnicoActual, setTecnicoActual] = useState(null);
 
+  // ✅ Obtener técnico actual desde el token al cargar el componente
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -34,6 +35,8 @@ function ListaAveriasTecnico() {
     try {
       const pendientes = await axiosInstance.get('/fallas/pendientes');
       const enProceso = await axiosInstance.get('/fallas/enProceso');
+
+      // Combinar ambas listas
       const todas = [...pendientes.data, ...enProceso.data];
       setAverias(todas);
     } catch (err) {
@@ -57,11 +60,6 @@ function ListaAveriasTecnico() {
   };
 
   const handleEditarClick = (falla) => {
-    if (falla.tecnicoMantenimiento?.id !== tecnicoActual?.id) {
-      alert("⚠️ No estás autorizado para editar esta avería.");
-      return;
-    }
-
     setEditarFalla({
       ...falla,
       fechaActualizacion: obtenerFechaLimaISO()
@@ -146,16 +144,12 @@ function ListaAveriasTecnico() {
                 <td>{av.supervisorProduccion?.nombre}</td>
                 <td>{av.tecnicoMantenimiento?.nombre || ''}</td>
                 <td>
-                  {(av.tecnicoMantenimiento?.id === tecnicoActual?.id) ? (
-                    <button
-                      className="btn btn-warning btn-sm"
-                      onClick={() => handleEditarClick(av)}
-                    >
-                      <FaUserEdit />
-                    </button>
-                  ) : (
-                    <span className="text-muted">No autorizado</span>
-                  )}
+                  <button
+                    className="btn btn-warning btn-sm"
+                    onClick={() => handleEditarClick(av)}
+                  >
+                    <FaUserEdit />
+                  </button>
                 </td>
               </tr>
             ))}
@@ -172,6 +166,7 @@ function ListaAveriasTecnico() {
                 <button type="button" className="btn-close" onClick={() => setMostrarModal(false)}></button>
               </div>
               <div className="modal-body">
+
                 <div className="mb-3">
                   <label>Descripción</label>
                   <textarea
@@ -216,6 +211,7 @@ function ListaAveriasTecnico() {
                     disabled
                   />
                 </div>
+
               </div>
 
               <div className="modal-footer">
@@ -226,6 +222,7 @@ function ListaAveriasTecnico() {
           </div>
         </div>
       )}
+
     </motion.div>
   );
 }
