@@ -57,7 +57,7 @@ function ListaAveriasTecnico() {
   };
 
   const handleEditarClick = (falla) => {
-    if (falla.tecnicoMantenimiento?.id !== tecnicoActual?.id) {
+    if (falla.tecnicoMantenimiento && falla.tecnicoMantenimiento.id !== tecnicoActual?.id) {
       alert("⚠️ No estás autorizado para editar esta avería.");
       return;
     }
@@ -146,7 +146,7 @@ function ListaAveriasTecnico() {
                 <td>{av.supervisorProduccion?.nombre}</td>
                 <td>{av.tecnicoMantenimiento?.nombre || ''}</td>
                 <td>
-                  {(av.tecnicoMantenimiento?.id === tecnicoActual?.id) ? (
+                  {(!av.tecnicoMantenimiento || av.tecnicoMantenimiento.id === tecnicoActual?.id) ? (
                     <button
                       className="btn btn-warning btn-sm"
                       onClick={() => handleEditarClick(av)}
